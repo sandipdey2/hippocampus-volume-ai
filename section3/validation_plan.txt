@@ -1,0 +1,63 @@
+HippoVolume.AI – Clinical Validation Plan
+=====================================
+
+1. Intended Use
+---------------
+HippoVolume.AI is a software device intended to automatically segment the hippocampus on T2-weighted MRI and report anterior, posterior, and total hippocampal volumes in cubic millimeters. The output is intended to support clinicians in assessing hippocampal atrophy associated with Alzheimer’s disease and related dementias. It is not intended as a standalone diagnostic tool.
+
+2. Ground Truth Definition
+--------------------------
+Ground truth segmentations will be created as follows:
+- Two board-certified neuroradiologists independently segment the right hippocampus on the same cropped T2 volumes using 3D Slicer.
+- A consensus label is generated with the STAPLE algorithm.
+- Inter-rater reliability is quantified with Dice coefficient and intraclass correlation coefficient (ICC) of volumes. A mean inter-rater Dice ≥ 0.85 and volume ICC ≥ 0.90 will be required before the consensus labels are accepted as ground truth.
+- All raters are trained on a common protocol and blinded to clinical diagnosis.
+
+3. Accuracy Metrics and Success Criteria
+----------------------------------------
+Primary endpoints (vs consensus ground truth):
+- Mean Dice coefficient ≥ 0.85
+- Mean absolute volume error ≤ 10 % or ≤ 200 mm³ (whichever is larger)
+
+Secondary endpoints:
+- Jaccard index
+- Sensitivity and specificity of the hippocampal mask
+- Pearson correlation and Bland–Altman limits of agreement for total volume
+
+4. Study Population and Data Collection
+---------------------------------------
+- Target enrollment: 200 subjects (100 AD, 50 MCI, 50 cognitively normal controls)
+- Age range: 55–85 years, balanced by sex
+- Multi-site, multi-vendor acquisition (1.5 T and 3 T; Siemens, GE, Philips)
+- Inclusion: diagnostic-quality T2 MRI covering the hippocampus, slice thickness ≤ 2 mm
+- Exclusion: severe motion, prior temporal-lobe surgery, large structural lesions
+
+5. Operating Range (Input Data Requirements)
+--------------------------------------------
+The algorithm is validated for:
+- Axial T2-weighted MRI
+- In-plane resolution ≤ 1.0 mm
+- Slice thickness ≤ 2.0 mm
+- Field of view covering the medial temporal lobe
+Studies falling outside these parameters will be flagged and excluded from automatic processing.
+
+6. Real-World Performance Estimation
+------------------------------------
+- Prospective silent-mode deployment at three clinical sites for six months.
+- AI-generated volumes compared with volumes recorded in clinical radiology reports.
+- Radiologist questionnaire assessing report clarity, trust, and perceived clinical utility.
+- Monitoring of failure modes (empty masks, extreme volume outliers, processing errors).
+
+7. Statistical Analysis
+-----------------------
+- Primary analysis on the locked test set (20 % of data, stratified by diagnosis and site).
+- Confidence intervals (95 %) reported for all primary metrics.
+- Subgroup analyses by scanner vendor, field strength, and diagnostic category.
+
+8. Risk Mitigation
+------------------
+- Clear labeling of the report as “Investigational – Not for primary diagnosis.”
+- Automatic flagging of low-confidence or out-of-distribution inputs.
+- Version control and audit trail of model and software.
+
+This plan establishes that HippoVolume.AI measures hippocampal volume with acceptable accuracy relative to expert consensus and defines the population and imaging conditions under which the performance claim is valid.

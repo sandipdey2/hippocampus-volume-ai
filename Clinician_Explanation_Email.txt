@@ -1,0 +1,28 @@
+Subject: Introduction to HippoVolume.AI – Automated Hippocampal Volume Measurement
+
+Dear Colleague,
+
+I am writing to introduce HippoVolume.AI, an automated tool that measures hippocampal volume from routine T2-weighted MRI scans. Because hippocampal atrophy is a sensitive marker of Alzheimer’s disease progression, reliable volume numbers can help you track patients over time and support clinical decision-making.
+
+What the algorithm does
+The software locates the hippocampus on the MRI, segments the anterior and posterior portions, and calculates three volumes in cubic millimeters:
+- Anterior hippocampus
+- Posterior hippocampus
+- Total hippocampus
+
+These numbers appear in a simple report that is automatically sent back to the PACS and can be viewed in OHIF (or any DICOM viewer) alongside the original images.
+
+Performance
+On an independent test set the algorithm achieved a mean Dice coefficient of 0.90 and a mean Jaccard index of 0.82 compared with expert segmentations. In practical terms, the volume measurements are typically within about 10 % of manual measurements for standard-quality T2 scans.
+
+How to use it
+Once a study is received by the PACS, the AI module runs automatically (or on demand). You will see a new series labeled “HippoVolume.AI Report” containing the volume numbers and a few reference slices. No extra clicks are required beyond opening the study.
+
+Limitations and appropriate use
+The tool is designed for diagnostic-quality axial T2 MRI with slice thickness ≤ 2 mm that adequately covers the medial temporal lobe. It may be less reliable on scans with severe motion, large artifacts, or unusual anatomy (e.g., post-surgical changes). The report is intended as a quantitative aid; final interpretation remains with the radiologist.
+
+I would be happy to walk you through a few example cases or answer any questions about the numbers you see in the reports.
+
+Best regards,
+Sandip Dey
+AI Engineering Team
